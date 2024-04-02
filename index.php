@@ -518,8 +518,11 @@ echo <<<END
 		window.addEventListener("click", (e) => {
 			if (!theme) return;
 			e = e.target.tagName == "A" ? e.target : e.target.parentElement;	// For codeberg.org/ltguillaume/bread
-			if (e.href)
+			if (e.href) {
 				e.href = e.getAttribute('href') +`#t=\${theme}`;
+				if (location.hash != `#t=\${theme}`)
+					location.hash = `#t=\${theme}`;
+			}
 		});
 		window.addEventListener("resize", calcDims);
 		window.addEventListener("scroll", () => {
