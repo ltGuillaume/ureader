@@ -330,6 +330,11 @@ echo <<<END
 		<title>{$title}</title>
 	</head>
 	<body>
+		<script>
+			let theme = location.hash[location.hash.startsWith("#t=") ? 3 : false] || 0;
+			if (theme)
+				document.body.className = `theme\${theme}`;
+		</script>
 		<div id="controls">
 			{$counters}&nbsp;&nbsp;
 			<button title="{$str->setTheme} (T)" onclick="setTheme()">&#9706;</button>
@@ -356,7 +361,6 @@ echo <<<END
 			pages,
 			pageCalc,
 			pageTurning,
-			theme = 0,
 			touchDevice = "ontouchstart" in window,
 			touchStartX,
 			touchDeltaX = 0,
@@ -511,6 +515,12 @@ echo <<<END
 		}, { passive: false });
 
 		/* Listeners */
+		window.addEventListener("click", (e) => {
+			if (!theme) return;
+			e = e.target.tagName == "A" ? e.target : e.target.parentElement;	// Bread
+			if (e.href)
+				e.href = e.getAttribute('href') +`#t=\${theme}`;
+		});
 		window.addEventListener("resize", calcDims);
 		window.addEventListener("scroll", () => {
 			if (freeScroll) return;
