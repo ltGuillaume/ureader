@@ -28,6 +28,7 @@ Minimal code to present a preformatted plain text document for comfortable readi
 	```
 1. Put the preformatted text in `contents.txt`, or Markdown formatted text in `contents.md`
 1. For offering multiple books/chapters you can put `contents.txt`/`contents.md` into subfolders (and optionally add a `config.php` for per-book settings)
+1. To share links that include the watchword, append `#ww=your%20watchword` to the URL (needs JavaScript to be enabled). The watchword will not be included in the server logs.
 
 ## Credits
 * The [Fanwood Text](https://www.theleagueofmoveabletype.com/fanwood) font by Barry Schwartz

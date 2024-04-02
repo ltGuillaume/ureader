@@ -70,7 +70,7 @@ if (isset($watchword)) {
 		]);
 
 	$hash  = hash("sha256", $watchword);
-	$ww    = $_GET["ww"] ?? $_POST["ww"] ?? false;
+	$ww    = $_POST["ww"] ?? false;
 	$match = $ww == $watchword || $_SESSION["ww"] == $hash;
 
 	if ($match)
@@ -84,11 +84,15 @@ if (isset($watchword)) {
 		$contents = <<<WW
 			<form action="//{$_SERVER["HTTP_HOST"]}{$_SERVER["REQUEST_URI"]}" method="post">
 				<br>{$prompt}<br>
-				<input type="password" name="ww" autofocus><br>
-				<input type="submit" value="{$str->submit}">
+				<input id="ww" type="password" name="ww" autofocus><br>
+				<input id="ok" type="submit" value="{$str->submit}">
 			</form>
 			<script>
 				document.documentElement.className = "ww";	// Disable white-space and JavaScript
+				if (location.hash.startsWith("#ww=")) {
+					ww.value = decodeURI(location.hash.substr(4));
+					ok.click();
+				}
 			</script>
 WW;
 }
