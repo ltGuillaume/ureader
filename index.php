@@ -517,7 +517,7 @@ echo <<<END
 		/* Listeners */
 		window.addEventListener("click", (e) => {
 			if (!theme) return;
-			e = e.target.tagName == "A" ? e.target : e.target.parentElement;	// Bread
+			e = e.target.tagName == "A" ? e.target : e.target.parentElement;	// For codeberg.org/ltguillaume/bread
 			if (e.href)
 				e.href = e.getAttribute('href') +`#t=\${theme}`;
 		});
@@ -540,6 +540,7 @@ echo <<<END
 
 		/* Initialization */
 		setTimeout(calcDims, 400);
+		console.log("Source: https://codeberg.org/ltguillaume/ureader");
 	</script>
 </html>
 END;
