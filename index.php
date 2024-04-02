@@ -248,11 +248,11 @@ echo <<<END
 				clear: both;
 			}
 			h1 {
-				font-size: 2.6rem;
+				font-size: 2em;
 				font-weight: normal;
 			}
 			h2 {
-				font-size: 1.4rem;
+				font-size: 1.25em;
 			}
 			input {
 				margin: .3rem;
@@ -296,7 +296,7 @@ echo <<<END
 /*				text-align: justify; */
 			}
 				#contents:first-line {
-					font-size: 2.6rem;
+					font-size: 2em;
 				}
 				html.js #contents:after {
 					display: block;
